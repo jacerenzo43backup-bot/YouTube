@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>YouTube</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="YouTube" />
+  <link rel="apple-touch-icon" href="https://www.youtube.com/s/desktop/7f3e8d49/img/favicon_144x144.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#000000">
+  <style>
+    :root{--bg:#000;--accent:#ff0000;--fg:#fff}
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Arial,Helvetica,sans-serif}
+    .wrap{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center}
+    .btn{background:var(--accent);color:var(--fg);padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+    .hint{opacity:.8;font-size:14px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <img src="https://www.youtube.com/s/desktop/7f3e8d49/img/favicon_144x144.png" alt="YouTube" width="72" height="72" />
+    <h1 style="margin:0">YouTube</h1>
+    <p class="hint">Tap the button to open YouTube. When added to Home Screen this will launch in standalone mode (no URL bar).</p>
+    <a class="btn" href="https://www.youtube.com" id="openBtn">Open YouTube</a>
+  </div>
+  <script>
+    document.getElementById('openBtn').addEventListener('click', function(e){
+      location.href = this.href;
+    });
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(()=>{});
+    }
+  </script>
+</body>
+</html>
